@@ -46,7 +46,9 @@ INSTALLED_APPS = [
 
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000',
-     '46.101.179.61'
+     '46.101.179.61',
+     'http://46.101.179.61',
+     'http://46.101.179.61:8000'
 ]
 
 MIDDLEWARE = [
