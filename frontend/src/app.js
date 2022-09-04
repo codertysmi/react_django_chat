@@ -14,9 +14,11 @@ import {
   Link,
   
 } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // version 5.2.0
 
 
 export default function App(props) {
+  let history = useNavigate ();
 
   const [rooms, setRooms] = useState([])
 
@@ -57,7 +59,7 @@ export default function App(props) {
                   {room.users} Users
                 </Typography>
               </div>
-              <Button onClick={()=>props.history.push(`/room/${room.name}`)} variant="contained" sx={{borderRadius: "24px"}} size="large" disableElevation>
+              <Button onClick={history(`/room/${room.name}`)} variant="contained" sx={{borderRadius: "24px"}} size="large" disableElevation>
                 Join
               </Button>
               </div>
@@ -73,7 +75,7 @@ export default function App(props) {
               </Typography>
             </Grid>
             <Grid item xs={12} sx={{flex: "center", justifyContent: "center", display: "flex"}}>
-                  <Button onClick={()=>props.history.push('/create') }variant="contained" color="primary" sx={{borderRadius: "24px"}} size="large" disableElevation>
+                  <Button onClick={()=>history('/create') }variant="contained" color="primary" sx={{borderRadius: "24px"}} size="large" disableElevation>
                   Create
                   </Button>
 

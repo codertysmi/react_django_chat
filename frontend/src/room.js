@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
-import axios from "axios";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -21,7 +20,7 @@ export default function Room(props){
     const roomName = loc.substring(6, )
     const [name, setName] = useState('test')
     const [text, setText] = useState('') 
-    const [socketUrl, setSocketUrl] = useState(`ws://127.0.0.1:8000/ws/chat/${roomName}/`);
+    const [socketUrl, setSocketUrl] = useState(`ws://127.0.0.1:9000/ws/chat/${roomName}/`);
     const [messageHistory, setMessageHistory] = useState([]);
     const [users, setUsers] = useState(1);
 

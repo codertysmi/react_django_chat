@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import axios from "axios";
 import React, { useState, useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Grid from '@mui/material/Grid';
@@ -12,9 +11,11 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { responsiveFontSizes } from '@mui/material';
 import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'; // version 5.2.0
 
 
 export default function Create(props) {
+  let history = useNavigate ();
 
   const [rooms, setRooms] = useState([])
   const [name, setName] = useState('')
@@ -35,7 +36,7 @@ export default function Create(props) {
             fetch('/api/create', requestOptions)
             .then((response) => {
               if (response.ok){
-                props.history.replace({ pathname: `/room/${name}`})
+                history(`/room/${name}`)
               }
             })
         }
