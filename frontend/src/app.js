@@ -26,6 +26,19 @@ export default function App(props) {
     axios.get('http://46.101.179.61:8000/api').then(res=>{
       setRooms(res.data.rooms)
     })
+
+    const requestOptions = {
+      method: 'GET',
+      headers: { "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken},  
+      };
+          fetch('http://46.101.179.61:8000/api', requestOptions)
+          .then((response) => {
+            if (response.ok){
+              setRooms(response.data.rooms)
+
+            }
+          })
   }, []) 
   return(
     <div>
