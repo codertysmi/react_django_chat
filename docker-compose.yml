@@ -4,9 +4,9 @@ services:
   backend:
     build:
       context: ./backend
-    command: gunicorn backend.wsgi --bind 0.0.0.0:9000
+    command: gunicorn backend.wsgi --bind 0.0.0.0:8000
     ports:
-      - "9000:9000"
+      - "8000:8000"
   frontend:
     build:
       context: ./frontend
