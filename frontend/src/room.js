@@ -20,7 +20,7 @@ export default function Room(props){
     const roomName = loc.substring(6, )
     const [name, setName] = useState('test')
     const [text, setText] = useState('') 
-    const [socketUrl, setSocketUrl] = useState(`ws://46.101.179.61:9000/ws/chat/${roomName}/`);
+    const [socketUrl, setSocketUrl] = useState(`ws://46.101.179.61:8000/ws/chat/${roomName}/`);
     const [messageHistory, setMessageHistory] = useState([]);
     const [users, setUsers] = useState(1);
 

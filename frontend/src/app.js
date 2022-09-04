@@ -23,7 +23,7 @@ export default function App(props) {
   const [rooms, setRooms] = useState([])
 
   useEffect(()=>{
-    axios.get('/api').then(res=>{
+    axios.get('http://46.101.179.61:8000/api').then(res=>{
       setRooms(res.data.rooms)
     })
   }, []) 
