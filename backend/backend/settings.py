@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!y-z9uz6p2sy2g&roa8m7akxyy%297cshd((4#z&qew*#wp9n+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['46.101.179.61']
 
 
 # Application definition
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     '46.101.179.61'
 ]
 
 MIDDLEWARE = [
