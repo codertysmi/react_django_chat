@@ -21,6 +21,7 @@ export default function App(props) {
   let history = useNavigate ();
 
   const [rooms, setRooms] = useState([])
+  const csrftoken = Cookies.get('csrftoken')
 
   useEffect(()=>{
     axios.get('http://46.101.179.61:8000/api/').then(res=>{
