@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['46.101.179.61']
 
 
 # Application definition
+CORS_ORIGIN_ALLOW_ALL=True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,12 +45,7 @@ INSTALLED_APPS = [
     'chat'
 ]
 
-CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
-     '46.101.179.61',
-     'http://46.101.179.61',
-     'http://46.101.179.61:8000'
-]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
