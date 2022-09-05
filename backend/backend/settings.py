@@ -25,12 +25,22 @@ SECRET_KEY = 'django-insecure-!y-z9uz6p2sy2g&roa8m7akxyy%297cshd((4#z&qew*#wp9n+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['46.101.179.61']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 CORS_ORIGIN_ALLOW_ALL=True
-
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

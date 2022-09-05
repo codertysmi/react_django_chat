@@ -25,9 +25,7 @@ export default function App(props) {
   const csrftoken = Cookies.get('csrftoken')
 
   useEffect(()=>{
-    axios.get('http://46.101.179.61:8000/api/').then(res=>{
-      setRooms(res.data.rooms)
-    })
+
 
     const requestOptions = {
       method: 'GET',
