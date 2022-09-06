@@ -12,7 +12,7 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from rest_framework.response import Response
 
-class RoomListView(ListModelMixin, GenericAPIView):
+class RoomListView(GenericAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     def get(self, request, *args, **kwargs):
