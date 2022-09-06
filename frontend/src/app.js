@@ -16,11 +16,12 @@ import {
 } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; // version 5.2.0
 import Cookies from 'js-cookie'
+import { formControlClasses } from '@mui/material';
 
 
 export default function App(props) {
   let history = useNavigate ();
-
+  var t = 2
   const [rooms, setRooms] = useState([])
   const csrftoken = Cookies.get('csrftoken')
 
@@ -32,10 +33,10 @@ export default function App(props) {
       headers: { "Content-Type": "application/json",
       "X-CSRFToken": csrftoken},  
       };
-          fetch('http://46.101.179.61:8000/api')
+          fetch('http://46.101.179.61:8080/api/')
           .then((response) => {
             if (response.ok){
-              setRooms(response.data.rooms)
+              response.json().then(data=>setRooms(data.rooms))
 
             }
           })
