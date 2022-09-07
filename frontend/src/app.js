@@ -48,6 +48,16 @@ export default function App(props) {
           })
   }, [])
   function Search(e){
+    if(e.target.value === ""){
+      fetch('http://46.101.179.61:8080/api/')
+      .then((response) => {
+        if (response.ok){
+          setLoading(false)
+          response.json().then(data=>setRooms(data.rooms))
+
+        }
+      })
+    }
     fetch(`http://46.101.179.61:8080/api/rooms?search=${e.target.value}`)
           .then((response) => {
             if (response.ok){
@@ -56,6 +66,7 @@ export default function App(props) {
             }
           })
   }
+
   return(
     <div>
       <Box m={10}>
