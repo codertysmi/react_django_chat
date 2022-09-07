@@ -17,12 +17,16 @@ import {
 import { useNavigate } from 'react-router-dom'; // version 5.2.0
 import Cookies from 'js-cookie'
 import { formControlClasses } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 export default function App(props) {
   let history = useNavigate ();
   var t = 2
   const [rooms, setRooms] = useState([])
+  const [text, setText] = useState('')
+  const [loading, setLoading] = useState(true)
+
   const csrftoken = Cookies.get('csrftoken')
 
   useEffect(()=>{
@@ -33,14 +37,25 @@ export default function App(props) {
       headers: { "Content-Type": "application/json",
       "X-CSRFToken": csrftoken},  
       };
-          fetch('http://46.101.179.61:8080/api/')
+          setLoading(true)
+          fetch('http://46.101.179.61:8000/api/')
           .then((response) => {
             if (response.ok){
+              setLoading(false)
               response.json().then(data=>setRooms(data.rooms))
 
             }
           })
-  }, []) 
+  }, [])
+  function Search(e){
+    fetch(`http://46.101.179.61:8000/api/rooms?search=${e.target.value}`)
+          .then((response) => {
+            if (response.ok){
+              response.json().then(data=>setRooms(data))
+
+            }
+          })
+  }
   return(
     <div>
       <Box m={10}>
@@ -54,13 +69,15 @@ export default function App(props) {
         </Grid>
         <Grid item xs={12} sx={{alignContent: "center", flex: "center", justifyContent: "center", flexDirection: "row", display: "flex"}}>
           <div style={{boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px", borderRadius: "18px", backgroundColor: "white", width: "500px", display: 'flex', alignItems: 'center'}}>
-          <InputBase placeholder="Search chat room" sx={{p: '6px 18px', width: "100%"}}/>
+          <InputBase onChange={Search} placeholder="Search chat room" sx={{p: '6px 18px', width: "100%"}}/>
           <IconButton size="large" type="button" sx={{ p: '10px', borderRadius: "18px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
           </div>
 
         </Grid>
+        {loading ? 
+         <CircularProgress style={{marginTop: "50px"}} /> : null}
         {rooms.map((room)=>(
           <Grid item xs={12} md={3} lg={3} sx={{alignContent: "center", flex: "center", justifyContent: "center", flexDirection: "row", display: "flex"}}>
               <div style={{backgroundColor: "white",  textAlign: "center", boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px", borderRadius: "24px", minHeight: "275px", width: "400px"}} >
@@ -73,7 +90,7 @@ export default function App(props) {
                   {room.users} Users
                 </Typography>
               </div>
-              <Button onClick={history(`/room/${room.name}`)} variant="contained" sx={{borderRadius: "24px"}} size="large" disableElevation>
+              <Button onClick={()=>history(`/room/${room.name}`)} variant="contained" sx={{borderRadius: "24px"}} size="large" disableElevation>
                 Join
               </Button>
               </div>
