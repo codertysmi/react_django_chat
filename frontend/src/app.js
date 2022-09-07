@@ -38,7 +38,7 @@ export default function App(props) {
       "X-CSRFToken": csrftoken},  
       };
           setLoading(true)
-          fetch('http://46.101.179.61:8000/api/')
+          fetch('http://46.101.179.61:8080/api/')
           .then((response) => {
             if (response.ok){
               setLoading(false)
@@ -48,7 +48,7 @@ export default function App(props) {
           })
   }, [])
   function Search(e){
-    fetch(`http://46.101.179.61:8000/api/rooms?search=${e.target.value}`)
+    fetch(`http://46.101.179.61:8080/api/rooms?search=${e.target.value}`)
           .then((response) => {
             if (response.ok){
               response.json().then(data=>setRooms(data))

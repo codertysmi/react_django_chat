@@ -33,7 +33,7 @@ export default function Create(props) {
             name: name
         }),
         };
-            fetch('http://46.101.179.61:8000/api/create', requestOptions)
+            fetch('http://46.101.179.61:8080/api/create', requestOptions)
             .then((response) => {
               if (response.ok){
                 history(`/room/${name}`)
